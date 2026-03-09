@@ -6,7 +6,7 @@ import Profile from '../screens/Profile';
 import Categories from '../screens/Categories';
 import DisplayWishList from '../screens/DisplayWishList';
 import Notification from '../screens/Notification';
-import { ROUTES } from '../theme/routes';
+import { ROUTES } from '../../theme/routes';
 import EditProfile from '../screens/EditProfile';
 import NotificationSettings from '../screens/NotificationSettings';
 import Language from '../screens/Language';

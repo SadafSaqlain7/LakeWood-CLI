@@ -1,8 +1,9 @@
 import { View, Text, StyleSheet, FlatList, TextInput, Pressable } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+//import { Ionicons } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import GobackArrow from '../components/ui/GobackArrow';
 import ChatProfile from '../assets/svgs/chatprofile.svg';
-import { fonts } from '../theme/theme';
+import { fonts } from '../../theme/theme';
 import { useState } from 'react';
 
 const MESSAGES = [

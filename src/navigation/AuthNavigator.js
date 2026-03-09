@@ -5,7 +5,7 @@ import SignUpLoginScreen from '../screens/SignUpLoginScreen.js';
 import LoginScreen from '../screens//authflow/LoginScreen';
 import SignUpScreen from '../screens/authflow/SignUpScreen.js';
 import ForgetPassword from '../screens/ForgetPassword.js';
-import { ROUTES } from '../theme/routes.js';
+import { ROUTES } from '../../theme/routes';
 
 const Stack = createNativeStackNavigator();
 

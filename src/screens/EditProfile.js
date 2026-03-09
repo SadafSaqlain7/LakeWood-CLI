@@ -1,13 +1,15 @@
 import { View, Text, StyleSheet, Modal, Pressable } from 'react-native';
 import { useState } from 'react';
-import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+//import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ProfileImage from '../assets/svgs/Profile.svg';
 import MessageImage from '../assets/svgs/Message.svg';
 
 import GobackArrow from '../components/ui/GobackArrow';
 import ActionButton from '../components/ui/ActionButton';
 import Input from '../components/ui/Input';
-import { fonts } from '../theme/theme';
+import { fonts } from '../../theme/theme';
 
 export default function EditProfile({ navigation }) {
     const [name, setName] = useState('Luke Skywalker');

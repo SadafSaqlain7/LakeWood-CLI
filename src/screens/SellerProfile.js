@@ -1,11 +1,13 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
+//import { LinearGradient } from 'expo-linear-gradient';
+import LinearGradient from 'react-native-linear-gradient';
+//import { Ionicons } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import GobackArrow from '../components/ui/GobackArrow';
 import ProductsList from '../components/ui/ProductsList';
 import ChatProfile from '../assets/svgs/chatprofile.svg';
-import PRODUCTS from '../theme/Products';
-import { fonts } from '../theme/theme';
+import PRODUCTS from '../../theme/Products';
+import { fonts } from '../../theme/theme';
 
 export default function SellerProfile({ navigation, route }) {
     const { sellerName = 'Alex hhhods' } = route.params || {};

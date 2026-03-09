@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet, Pressable, Animated } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+//import { Ionicons } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useRef } from 'react';
-import { fonts } from '../../theme/theme';
+import { fonts } from '../../../theme/theme';
 
 export default function NotificationCard({ item, onDelete }) {
   const translateX = useRef(new Animated.Value(0)).current;

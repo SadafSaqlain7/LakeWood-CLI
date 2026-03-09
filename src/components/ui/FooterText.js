@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet, Pressable } from 'react-native';
-import { fonts } from '../../theme/theme';
+import { fonts } from '../../../theme/theme';
 export default function FooterText({ ...props }) {
     return (
         <View style={[styles.footerText, props.style]}>

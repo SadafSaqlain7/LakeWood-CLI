@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
 import LogoMini from '../assets/svgs/Logo2.svg';
 import ChatProfile from '../assets/svgs/chatprofile.svg';
 import Navbar from '../components/ui/Navbar';
-import { fonts } from '../theme/theme';
+import { fonts } from '../../theme/theme';
 
 const CHAT_DATA = [
   {

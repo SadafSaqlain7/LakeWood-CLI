@@ -1,12 +1,17 @@
 import { View, Text, Pressable, StyleSheet, FlatList } from 'react-native';
 import GobackArrow from '../components/ui/GobackArrow';
-import { Ionicons } from '@expo/vector-icons';
-import Entypo from '@expo/vector-icons/Entypo';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+//import { Ionicons } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+//import Entypo from '@expo/vector-icons/Entypo';
+import Entypo from 'react-native-vector-icons/Entypo';
+//import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+//import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+//import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import PopularCategories from '../components/ui/PopularCategories';
-import { fonts } from '../theme/theme';
+import { fonts } from '../../theme/theme';
 
 
 

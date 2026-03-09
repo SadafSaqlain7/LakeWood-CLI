@@ -5,7 +5,7 @@ import { createContext } from 'react';
 import { useContext } from 'react';
 import MainNavigator from './MainNavigator';
 import { useState } from 'react';
-import { AuthContext } from '../App.js';
+import { AuthContext } from '../../App.js';
 
 export default function AppNavigator() {
 
@@ -13,11 +13,12 @@ export default function AppNavigator() {
 
   return (
     <NavigationContainer>
-      {user ? (
+      {/* {user ? (
         <MainNavigator  />
       ) : (
         <AuthNavigator />
-      )}
+      )} */}
+      <AuthNavigator />
     </NavigationContainer>
   );
 }

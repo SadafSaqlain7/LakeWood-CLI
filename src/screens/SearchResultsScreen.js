@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
-import PRODUCTS from '../theme/Products';
-import { fonts } from '../theme/theme';
+import PRODUCTS from '../../theme/Products';
+import { fonts } from '../../theme/theme';
 import SearchBar from '../components/ui/SearchBar';
 import ProductsList from '../components/ui/ProductsList';
 import GobackArrow from '../components/ui/GobackArrow';

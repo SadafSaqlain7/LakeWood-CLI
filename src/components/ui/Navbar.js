@@ -1,6 +1,8 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
-import Entypo from '@expo/vector-icons/Entypo';
-import Ionicons from '@expo/vector-icons/Ionicons';
+//import Entypo from '@expo/vector-icons/Entypo';
+//import Ionicons from '@expo/vector-icons/Ionicons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Entypo from 'react-native-vector-icons/Entypo';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 

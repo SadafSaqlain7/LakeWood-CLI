@@ -1,11 +1,15 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import ProfilePicture from '../assets/svgs/profilepicture.svg';
 import DisplayWishList from './DisplayWishList';
-import { Ionicons, MaterialIcons, FontAwesome } from '@expo/vector-icons';
+//import { Ionicons, MaterialIcons, FontAwesome } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useState } from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
+//import { LinearGradient } from 'expo-linear-gradient';
+import LinearGradient from 'react-native-linear-gradient';
 import Navbar from '../components/ui/Navbar';
-import { fonts } from '../theme/theme'; 
+import { fonts } from '../../theme/theme'; 
 import LogoMini from '../assets/svgs/Logo2.svg';
 import { ROUTES } from '../theme/routes';
 import EditProfile from './EditProfile';

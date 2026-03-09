@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet, Image, Pressable } from "react-native";
-import { fonts } from "../theme/theme";
+import { fonts } from '../../theme/theme';
 import BuyImage from '../assets/svgs/buyImage.svg';
 import SellImage from '../assets/svgs/sellImage.svg';
 import LogoImage from '../assets/svgs/LogoImage.svg';

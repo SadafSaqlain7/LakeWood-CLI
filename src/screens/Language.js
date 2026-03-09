@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { useState } from 'react';
 import GobackArrow from '../components/ui/GobackArrow';
-import { fonts } from '../theme/theme';
+import { fonts } from '../../theme/theme';
 
 export default function Language() {
   const [selected, setSelected] = useState('en');

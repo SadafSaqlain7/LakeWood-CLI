@@ -1,7 +1,9 @@
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
-import { fonts } from '../../theme/theme';
-import { Ionicons } from '@expo/vector-icons';
-import EvilIcons from '@expo/vector-icons/EvilIcons';
+import { fonts } from '../../../theme/theme';
+//import { Ionicons } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+//import EvilIcons from '@expo/vector-icons/EvilIcons';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import { useState } from 'react';
 
 export default function ProductCard({ item, onCardPress, onFavouritePress, isFavourite }) {

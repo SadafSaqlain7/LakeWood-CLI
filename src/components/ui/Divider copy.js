@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet} from 'react-native';
-import { fonts } from '../../theme/theme';
+import { fonts } from '../../../theme/theme';
 export default function Divider({style})
 {
     return (

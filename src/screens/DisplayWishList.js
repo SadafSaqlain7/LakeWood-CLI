@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet, FlatList } from 'react-native';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+//import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ProductCard from '../components/ui/ProductCard';
-import { fonts } from '../theme/theme';
+import { fonts } from '../../theme/theme';
 import GobackArrow from '../components/ui/GobackArrow';
 
 export default function DisplayWishList({ wishlist = [], addtoWishlist }) {

@@ -2,8 +2,8 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { useState } from 'react';
 import GobackArrow from '../components/ui/GobackArrow';
 import NotificationCard from '../components/ui/NotificationCard';
-import { fonts } from '../theme/theme';
-import { ROUTES } from '../theme/routes';
+import { fonts } from '../../theme/theme';
+import { ROUTES } from '../../theme/routes';
 
 const initialNotifications = [
   {

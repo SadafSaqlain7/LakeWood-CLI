@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+//import { Ionicons } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import GobackArrow from '../components/ui/GobackArrow';
-import { fonts } from '../theme/theme';
+import { fonts } from '../../theme/theme';
 import ChatProfile from '../assets/svgs/chatprofile.svg';
 
 export default function ProductDetails({ route, navigation }) {

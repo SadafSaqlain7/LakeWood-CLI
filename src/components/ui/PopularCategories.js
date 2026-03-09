@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native';
 import CategoryList from './CategoryList';
 import Categories from '../../screens/Categories';
-import { fonts } from '../../theme/theme';
+import { fonts } from '../../../theme/theme';
 import { useState } from 'react';
 
 const CATEGORIES = [

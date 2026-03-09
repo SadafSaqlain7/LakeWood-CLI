@@ -1,5 +1,5 @@
 import { Text, Image, View, StyleSheet } from 'react-native';
-import { fonts } from '../../theme/theme';
+import { fonts } from '../../../theme/theme';
 import LogoMini from '../../assets/svgs/Logo2.svg';
 
 export default function LogoTextContainer({...props}) {

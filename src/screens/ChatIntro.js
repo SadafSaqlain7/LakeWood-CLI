@@ -11,8 +11,9 @@ import { useState } from 'react';
 import GobackArrow from '../components/ui/GobackArrow';
 import ChatProfile from '../assets/svgs/chatprofile.svg';
 import MessagingPicture from '../assets/svgs/messaging.svg';
-import { Ionicons } from '@expo/vector-icons';
-import { fonts } from '../theme/theme';
+//import { Ionicons } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { fonts } from '../../theme/theme';
 
 export default function ChatIntro({ navigation, route }) {
     const { sellerName = 'Luke Skywalker', product } = route.params || {};

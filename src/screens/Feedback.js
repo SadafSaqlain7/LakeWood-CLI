@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet, TextInput, Pressable, Modal } from 'react-native';
 import { useState } from 'react';
 import Navbar from '../components/ui/Navbar';
-import { fonts } from '../theme/theme';
-import { LinearGradient } from 'expo-linear-gradient';
+import { fonts } from '../../theme/theme';
+import LinearGradient from 'react-native-linear-gradient';
 import FeedbackImage from '../assets/svgs/feedback.svg';
 
 export default function Feedback({ navigation }) {

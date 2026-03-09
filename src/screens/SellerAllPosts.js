@@ -3,8 +3,8 @@ import { useState } from 'react';
 import GobackArrow from '../components/ui/GobackArrow';
 import SearchBar from '../components/ui/SearchBar';
 import ProductsList from '../components/ui/ProductsList';
-import PRODUCTS from '../theme/Products';
-import { fonts } from '../theme/theme';
+import PRODUCTS from '../../theme/Products';
+import { fonts } from '../../theme/theme';
 
 export default function SellerAllPosts({ navigation, route }) {
   const { sellerName = 'Alex Hales' } = route.params || {};

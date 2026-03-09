@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Switch } from 'react-native';
 import { useState } from 'react';
 import GobackArrow from '../components/ui/GobackArrow';
-import { fonts } from '../theme/theme';
+import { fonts } from '../../theme/theme';
 
 export default function NotificationSettings() {
   const [generalNotification, setGeneralNotification] = useState(false);

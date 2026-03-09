@@ -1,6 +1,8 @@
 import { View, StyleSheet, TextInput, Pressable } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+//import { Ionicons } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+//import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import { useState } from 'react';
 
 export default function SearchBar({ value, onChange, placeholder = "Search", onSubmit }) {
