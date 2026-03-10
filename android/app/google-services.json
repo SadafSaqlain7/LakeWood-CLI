@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "78624440511",
+    "project_id": "lakewood-1b3a7",
+    "storage_bucket": "lakewood-1b3a7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78624440511:android:a6afa0681e8ae31053460a",
+        "android_client_info": {
+          "package_name": "com.lakewood_cli"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA05f8-RzyUFjkqVKaen8xvb6yCBhR41Vs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78624440511:android:220fa63a5362c3f753460a",
+        "android_client_info": {
+          "package_name": "lakwood.company.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA05f8-RzyUFjkqVKaen8xvb6yCBhR41Vs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
