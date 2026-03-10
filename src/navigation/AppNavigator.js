@@ -13,12 +13,12 @@ export default function AppNavigator() {
 
   return (
     <NavigationContainer>
-      {/* {user ? (
+       {user ? (
         <MainNavigator  />
       ) : (
         <AuthNavigator />
-      )} */}
-      <AuthNavigator />
+      )} 
+  
     </NavigationContainer>
   );
 }
