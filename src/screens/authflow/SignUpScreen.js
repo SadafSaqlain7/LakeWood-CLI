@@ -7,6 +7,10 @@ import LogoTextContainer from '../../components/ui/LogoTextContainer';
 import ProfileImage from '../../assets/svgs/Profile.svg';
 import MessageImage from '../../assets/svgs/Message.svg';
 import LockImage from '../../assets/svgs/Lock.svg';
+import { AuthContext } from '../../../App';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { getAuth, createUserWithEmailAndPassword } from '@react-native-firebase/auth';
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';

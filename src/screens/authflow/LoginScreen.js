@@ -8,7 +8,6 @@ import FooterText from '../../components/ui/FooterText';
 import Divider from '../../components/ui/Divider';
 import RememberMeCheckbox from '../../components/ui/RememberCheckBox';
 import GobackArrow from '../../components/ui/GobackArrow';
-
 import AppleLogo from '../../assets/svgs/applelogoblack.svg';
 import FacebookLogo from '../../assets/svgs/facebooklogo.svg';
 import GoogleLogo from '../../assets/svgs/googlelogo.svg';
