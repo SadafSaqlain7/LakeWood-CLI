@@ -3,6 +3,6 @@
   "compilerOptions": {
     "types": ["jest"]
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "src/hooks/useAuth.js", "src/helpers/toast.js"],
   "exclude": ["**/node_modules", "**/Pods"]
 }
