@@ -5,10 +5,12 @@ import Toast from 'react-native-toast-message';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState('');
+
+  const [user, setUser] = useState(null);
+  const [selectedRole, setSelectedRole] = useState(null);
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, selectedRole, setSelectedRole }}>
       {children}
     </AuthContext.Provider>
   );
@@ -18,7 +20,6 @@ export default function App() {
   return (
     <AuthProvider>
       <AppNavigator />
-
       <Toast />
     </AuthProvider>
   );

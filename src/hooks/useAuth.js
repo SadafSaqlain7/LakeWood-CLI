@@ -5,52 +5,55 @@ import { AuthContext } from '../../App';
 import { showToast } from '../helpers/toast';
 
 export const useAuth = () => {
-  const { setUser } = useContext(AuthContext);
+  
+  const { setUser } = useContext(AuthContext); 
 
-  const signup = async ({ username, email, password }) => {
+  const signup = async ({ username, email, password, role }) => { 
     try {
-      const result = await auth().createUserWithEmailAndPassword(
-        email,
-        password
-      );
-
+      const result = await auth().createUserWithEmailAndPassword(email, password);
       const uid = result.user.uid;
 
       await firestore()
         .collection('users')
         .doc(uid)
         .set({
-          uid: uid,
-          username: username,
-          email: email,
+          uid,
+          username,
+          email,
+          role, 
           createdAt: firestore.FieldValue.serverTimestamp(),
         });
 
-      setUser({ userId: uid });
+      setUser({
+        userId: uid,
+        role, 
+      });
 
       showToast('Account created successfully', 'Success', 'success');
+      return null;
+
     } catch (error) {
       console.log('Signup error:', error.code);
 
       if (error.code === 'auth/email-already-in-use') {
-        throw { email: 'This email is already registered' };
-      } else if (error.code === 'auth/invalid-email') {
-        throw { email: 'Invalid email address' };
-      } else if (error.code === 'auth/weak-password') {
-        throw { password: 'Password is too weak' };
-      } else {
-        showToast('Signup failed', 'Error');
+        return { email: 'This email is already registered' };
       }
+
+      if (error.code === 'auth/invalid-email') {
+        return { email: 'Invalid email address' };
+      }
+
+      if (error.code === 'auth/weak-password') {
+        return { password: 'Password is too weak' };
+      }
+
+      return { general: 'Signup failed. Try again.' };
     }
   };
 
   const login = async ({ email, password }) => {
     try {
-      const result = await auth().signInWithEmailAndPassword(
-        email,
-        password
-      );
-
+      const result = await auth().signInWithEmailAndPassword(email, password);
       const uid = result.user.uid;
 
       const userDoc = await firestore()
@@ -58,11 +61,14 @@ export const useAuth = () => {
         .doc(uid)
         .get();
 
-      if (!userDoc.exists) {
-        throw new Error('User data not found');
-      }
+      if (!userDoc.exists) throw new Error('User data not found');
 
-      setUser({ userId: uid });
+      const userData = userDoc.data();
+
+      setUser({
+        userId: uid,
+        role: userData.role, 
+      });
 
       showToast('Login successful', 'Success', 'success');
     } catch (error) {
@@ -80,5 +86,21 @@ export const useAuth = () => {
     }
   };
 
-  return { signup, login };
+  const sendResetEmail = async (email) => {
+    try {
+      await auth().sendPasswordResetEmail(email);
+      showToast('Reset link sent! Check your inbox.', 'Email Sent', 'success');
+    } catch (error) {
+      console.log('sendResetEmail error:', error.code);
+      if (error.code === 'auth/user-not-found') {
+        throw new Error('No account found with this email address.');
+      } else if (error.code === 'auth/invalid-email') {
+        throw new Error('Please enter a valid email address.');
+      } else {
+        throw new Error('Failed to send reset email. Please try again.');
+      }
+    }
+  };
+
+  return { signup, login, sendResetEmail };
 };

@@ -26,5 +26,9 @@ export const ROUTES = {
   SELLERALLPOSTS: 'SellerAllPosts',
   CHATINTRO: 'ChatIntro',
    CHATCONVERSATION: 'ChatConversation',
-  CHATPRODUCTPREVIEW: 'ChatProductPreview'
+  CHATPRODUCTPREVIEW: 'ChatProductPreview',
+  SELLERHOMESCREEN: 'SellerHomeScreen',
+  ADDPOST: 'AddPost',
+  ACTIVEPOSTS: 'ActivePosts',
+  SELLERPOSTDETAILS: 'SellerPostDetails'
 }

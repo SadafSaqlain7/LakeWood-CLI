@@ -1,13 +1,11 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { fonts } from '../../../theme/theme';
 
-export default function ActionButton({ ...props }) {
+export default function ActionButton({ buttonStyle, textStyle, ...props }) {
     return (
-
-        <Pressable style={styles.Button} onPress={props.onPress}>
-            <Text style={styles.text}>{props.title}</Text>
+        <Pressable style={[styles.Button, buttonStyle]} onPress={props.onPress}>
+            <Text style={[styles.text, textStyle]}>{props.title}</Text>
         </Pressable>
-
     )
 }
 

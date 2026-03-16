@@ -8,47 +8,100 @@ import ProfileImage from '../../assets/svgs/Profile.svg';
 import MessageImage from '../../assets/svgs/Message.svg';
 import LockImage from '../../assets/svgs/Lock.svg';
 import { AuthContext } from '../../../App';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
 import { getAuth, createUserWithEmailAndPassword } from '@react-native-firebase/auth';
-
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
+import { useState } from 'react';
+import { useContext } from 'react';
+// import { useFormik } from 'formik';
+// import * as Yup from 'yup';
 
 import { useAuth } from '../../hooks/useAuth';
 
-const signupValidationSchema = Yup.object().shape({
-  username: Yup.string().min(3, 'Username too short').required('Username is required'),
-  email: Yup.string().email('Please enter a valid email').required('Email is required'),
-  password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password')], 'Passwords must match')
-    .required('Confirm your password'),
-});
+
+// const signupValidationSchema = Yup.object().shape({
+//   username: Yup.string().min(3, 'Username too short').required('Username is required'),
+//   email: Yup.string().email('Please enter a valid email').required('Email is required'),
+//   password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
+//   confirmPassword: Yup.string()
+//     .oneOf([Yup.ref('password')], 'Passwords must match')
+//     .required('Confirm your password'),
+// });
 
 export default function SignUpScreen({ navigation }) {
   const { signup } = useAuth();
+  const { selectedRole } = useContext(AuthContext);
 
-  const formik = useFormik({
-    initialValues: {
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    },
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-    validationSchema: signupValidationSchema,
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [usernameError, setUsernameError] = useState('');
+  const [confirmPasswordError, setConfirmPasswordError] = useState('');
 
-    onSubmit: async (values, { setErrors }) => {
-      try {
-        await signup(values);
-      } catch (error) {
-        setErrors(error);
-      }
-    },
-  });
+  // const formik = useFormik({
+  //   initialValues: {
+  //     username: '',
+  //     email: '',
+  //     password: '',
+  //     confirmPassword: '',
+  //   },
 
-  const { values, errors, touched, handleChange, handleBlur, handleSubmit } = formik;
+  //   // validationSchema: signupValidationSchema,
+
+  //   onSubmit: async (values, { setErrors }) => {
+  //     try {
+  //       await signup(values);
+  //     } catch (error) {
+  //       setErrors(error);
+  //     }
+  //   },
+  // });
+
+  //const { values, errors, touched, handleChange, handleBlur, handleSubmit } = formik;
+
+  const handleSignup = async () => {
+    if (!email) {
+      setEmailError('Email is required');
+      return;
+    }
+    setEmailError('');
+
+    if (!password) {
+      setPasswordError('Password is required');
+      return;
+    }
+    setPasswordError('');
+
+    if (!username) {
+      setUsernameError('Username is required');
+      return;
+    }
+    setUsernameError('');
+
+    if (!confirmPassword) {
+      setConfirmPasswordError('Confirm Password is required');
+      return;
+    }
+    setConfirmPasswordError('');
+
+    const errors = await signup({
+      username,
+      email,
+      password,
+      role: selectedRole || buyer,
+    });
+    if (errors?.email) {
+      setEmailError(errors.email);
+    }
+    setEmailError('');
+    if (errors?.password) {
+      setPasswordError(errors.password);
+    }
+    setPasswordError(''); 
+
+  };
 
   return (
     <View style={styles.Container}>
@@ -63,58 +116,57 @@ export default function SignUpScreen({ navigation }) {
 
         <Input
           placeholder="Username"
-          icon={<ProfileImage />}
-          value={values.username}
-          onChangeText={handleChange('username')}
-          onBlur={handleBlur('username')}
+          Icon={<ProfileImage />}
+          value={username}
+          onChangeText={setUsername}
         />
 
-        {touched.username && errors.username && (
-          <Text style={styles.errorText}>{errors.username}</Text>
-        )}
+        {usernameError ? (
+          <Text style={styles.errorText}>{usernameError}</Text>
+        ) : null}
 
         <Input
           placeholder="Email"
-          icon={<MessageImage />}
-          value={values.email}
-          onChangeText={handleChange('email')}
-          onBlur={handleBlur('email')}
+          Icon={<MessageImage />}
+          value={email}
+          onChangeText={(text) => {
+            setEmail(text);
+            setEmailError('');
+          }}
         />
 
-        {errors.email && (
-          <Text style={styles.errorText}>{errors.email}</Text>
-        )}
+        {emailError ? (
+          <Text style={styles.errorText}>{emailError}</Text>
+        ) : null}
 
         <Input
           placeholder="Password"
-          icon={<LockImage />}
+          Icon={<LockImage />}
           secureTextEntry
-          value={values.password}
-          onChangeText={handleChange('password')}
-          onBlur={handleBlur('password')}
+          value={password}
+          onChangeText={setPassword}
         />
-
-        {errors.password && (
-          <Text style={styles.errorText}>{errors.password}</Text>
-        )}
+        {passwordError ? (
+          <Text style={styles.errorText}>{passwordError}</Text>
+        ) : null}
 
         <Input
           placeholder="Confirm Password"
-          icon={<LockImage />}
+          Icon={<LockImage />}
           secureTextEntry
-          value={values.confirmPassword}
-          onChangeText={handleChange('confirmPassword')}
-          onBlur={handleBlur('confirmPassword')}
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
         />
 
-        {touched.confirmPassword && errors.confirmPassword && (
-          <Text style={styles.errorText}>{errors.confirmPassword}</Text>
-        )}
+        {confirmPasswordError ? (
+          <Text style={styles.errorText}>{confirmPasswordError}</Text>
+        ) : null}
+
       </View>
 
       <ActionButton
         title="Sign Up"
-        onPress={handleSubmit}
+        onPress={handleSignup}
       />
 
       <FooterText
@@ -123,6 +175,7 @@ export default function SignUpScreen({ navigation }) {
         subtitle="Sign In"
         onPress={() => navigation.navigate('LoginScreen')}
       />
+
     </View>
   );
 }
@@ -146,3 +199,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
 });
+
+
+
+
+
+
+
+
+
