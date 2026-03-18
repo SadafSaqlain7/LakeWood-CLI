@@ -57,7 +57,7 @@ export default function Chats({ navigation }) {
         )}
       />
 
-      <Navbar navigation={navigation} />
+      <Navbar navigation={navigation} activeTab="Chats" />
     </View>
   );
 }

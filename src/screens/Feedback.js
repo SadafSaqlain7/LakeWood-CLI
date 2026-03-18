@@ -52,7 +52,7 @@ export default function Feedback({ navigation }) {
         <Text style={styles.submitText}>Submit</Text>
       </Pressable>
 
-      <Navbar navigation={navigation} />
+      <Navbar navigation={navigation} activeTab="Feedback" />
 
       
       <Modal

@@ -4,26 +4,21 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-export default function SellerNavbar({ onPress, navigation }) {
-    const [activeTab, setActiveTab] = useState('Home');
+export default function SellerNavbar({ onPress, navigation, activeTab = 'Home' }) {
 
     function handlePress(tab) {
         switch (tab) {
             case 'Home':
                 navigation.navigate('SellerHomeScreen');
-                setActiveTab(tab);
                 break;
             case 'Chats':
                 navigation.navigate('Chats');
-                setActiveTab(tab);
                 break;
             case 'MyPosts':
                 navigation.navigate('SellerAllPosts'); 
-                setActiveTab(tab);
                 break;
             case 'Profile':
                 navigation.navigate('SellerProfile');
-                setActiveTab(tab);
                 break;
         }
     }
@@ -79,12 +74,12 @@ const styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         right: 0,
-        height: 70,
+        height: 60,
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
         borderTopColor: '#eee',
-        marginBottom: 10,
+        marginBottom: 0,
         backgroundColor: '#fff',
     },
     tab: {

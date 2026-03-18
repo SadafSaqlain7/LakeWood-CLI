@@ -35,6 +35,8 @@ export default function LoginScreen({ navigation }) {
     },
 
     validationSchema: loginValidationSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
 
     onSubmit: async (values, { setErrors }) => {
       try {

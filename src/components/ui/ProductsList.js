@@ -3,9 +3,9 @@ import ProductCard from './ProductCard';
 
 export default function ProductsList({ 
   products = [], 
-  wishlist = [], 
-  addtoWishlist,
-  navigation
+  addtoWishlist, 
+  navigation,
+  currentUserId
 }) {
   return (
     <FlatList
@@ -16,8 +16,8 @@ export default function ProductsList({
       renderItem={({ item }) => (
         <ProductCard
           item={item}
-          isFavourite={wishlist.some((i) => i.id === item.id)}
-          onFavouritePress={() => addtoWishlist(item)}
+          isFavourite={item.likedBy?.includes(currentUserId)} 
+          onFavouritePress={() => addtoWishlist(item)} 
           onCardPress={() =>
             navigation.navigate('ProductDetails', { product: item })
           }

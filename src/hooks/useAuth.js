@@ -5,29 +5,26 @@ import { AuthContext } from '../../App';
 import { showToast } from '../helpers/toast';
 
 export const useAuth = () => {
-  
-  const { setUser } = useContext(AuthContext); 
 
-  const signup = async ({ username, email, password, role }) => { 
+  const { setUser } = useContext(AuthContext);
+
+  const signup = async ({ username, email, password, role }) => {
     try {
       const result = await auth().createUserWithEmailAndPassword(email, password);
       const uid = result.user.uid;
-
+      const payload = {
+        userId: uid,
+        username,
+        email,
+        role,
+        createdAt: firestore.FieldValue.serverTimestamp(),
+      }
       await firestore()
         .collection('users')
         .doc(uid)
-        .set({
-          uid,
-          username,
-          email,
-          role, 
-          createdAt: firestore.FieldValue.serverTimestamp(),
-        });
+        .set(payload);
 
-      setUser({
-        userId: uid,
-        role, 
-      });
+      setUser(payload);
 
       showToast('Account created successfully', 'Success', 'success');
       return null;
@@ -67,7 +64,10 @@ export const useAuth = () => {
 
       setUser({
         userId: uid,
-        role: userData.role, 
+        role: userData.role,
+        username: userData.username,
+        email: userData.email,
+        createdAt: userData.createdAt
       });
 
       showToast('Login successful', 'Success', 'success');

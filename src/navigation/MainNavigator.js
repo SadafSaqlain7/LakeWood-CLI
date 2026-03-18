@@ -48,6 +48,7 @@ export default function MainNavigator() {
           <Stack.Screen name={ROUTES.ADDPOST} component={AddPost} />
           <Stack.Screen name={ROUTES.ACTIVEPOSTS} component={ActivePosts} />
           <Stack.Screen name={ROUTES.SELLERPOSTDETAILS} component={SellerPostDetails} />
+          <Stack.Screen name={ROUTES.SELLERALLPOSTS} component={SellerAllPosts} />
         </>
       )}
 

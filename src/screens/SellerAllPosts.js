@@ -83,7 +83,7 @@ export default function SellerAllPosts({ navigation, route }) {
         showsVerticalScrollIndicator={false}
       />
 
-      <SellerNavbar navigation={navigation} />
+      <SellerNavbar navigation={navigation} activeTab="MyPosts" />
     </View>
   );
 }

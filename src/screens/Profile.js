@@ -78,7 +78,7 @@ export default function Profile({ navigation, onPress }) {
                     <Ionicons name="chevron-forward" size={20} color="#999" style={styles.forwardIcon} />
                 </Pressable>
             </View>
-            <Navbar navigation={navigation} />
+            <Navbar navigation={navigation} activeTab="Profile" />
 
         </View>
     );

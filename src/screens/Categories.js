@@ -27,79 +27,54 @@ function IconCard({ item }) {
 }
 
 
-const categoriesData =
-    [
-        {
-            id: '1',
-            title: 'Clothes',
-            Icon: <Ionicons name="shirt-sharp" size={24} color="#167738" />,
+const categoryIconsMap = {
+    'clothes': <Ionicons name="shirt-sharp" size={24} color="#167738" />,
+    'books': <Entypo name="book" size={24} color="#167738" />,
+    'electronics': <MaterialCommunityIcons name="devices" size={24} color="#167738" />,
+    'jewelry': <MaterialIcons name="watch" size={24} color="#167738" />,
+    'jewelary': <MaterialIcons name="watch" size={24} color="#167738" />,
+    'cars': <FontAwesome5 name="car" size={24} color="#167738" />,
+    'shoes': <MaterialCommunityIcons name="shoe-cleat" size={24} color="#167738" />,
+    'footwear': <MaterialCommunityIcons name="shoe-cleat" size={24} color="#167738" />,
+    'furniture': <MaterialCommunityIcons name="lamp" size={24} color="#167738" />,
+    'hair accessories': <MaterialCommunityIcons name="hair-dryer" size={24} color="#167738" />,
+    'accessories': <MaterialCommunityIcons name="hair-dryer" size={24} color="#167738" />,
+    'miscellaneous': <MaterialIcons name="devices" size={24} color="#167738" />,
+    'services': <FontAwesome5 name="hand-holding" size={24} color="#167738" />,
+    'giveaways': <MaterialCommunityIcons name="gift-open" size={24} color="#167738" />,
+    'hoodie': <Ionicons name="shirt-sharp" size={24} color="#167738" />,
+    'stationary': <Entypo name="book" size={24} color="#167738" />,
+    'default': <MaterialCommunityIcons name="shape" size={24} color="#167738" />
+};
 
-        },
-        {
-            id: '2',
-            title: 'Books',
-            Icon: <Entypo name="book" size={24} color="#167738" />,
-
-        },
-        {
-            id: '3',
-            title: 'Electronics',
-            Icon: <MaterialCommunityIcons name="devices" size={24} color="#167738" />,
-
-        },
-        {
-            id: '4',
-            title: 'Jewelary',
-            Icon: <MaterialIcons name="watch" size={24} color="#167738" />,
-
-        },
-        {
-            id: '5',
-            title: 'Cars',
-            Icon: <FontAwesome5 name="car" size={24} color="#167738" />,
-
-        },
-        {
-            id: '6',
-            title: 'Footwear',
-            Icon: <MaterialCommunityIcons name="shoe-cleat" size={24} color="#167738" />,
-
-        },
-        {
-            id: '7',
-            title: 'Furniture',
-            Icon: <MaterialCommunityIcons name="lamp" size={24} color="#167738" />,
-
-        },
-        {
-            id: '8',
-            title: 'Hair Accessories',
-            Icon: <MaterialCommunityIcons name="hair-dryer" size={24} color="#167738" />,
-
-        },
-        {
-            id: '9',
-            title: 'Miscellaneous',
-            Icon: <MaterialIcons name="devices" size={24} color="#167738" />,
-
-        },
-        {
-            id: '10',
-            title: 'Services',
-            Icon: <FontAwesome5 name="hand-holding" size={24} color="#167738" />,
-
-        },
-        {
-            id: '11',
-            title: 'Giveaways',
-            Icon: <MaterialCommunityIcons name="gift-open" size={24} color="#167738" />,
-
-        },
-    ]
-
-
+import { useState, useEffect } from 'react';
+import firestore from '@react-native-firebase/firestore';
 
 export default function Categories({ category = [] }) {
+    const [categoriesData, setCategoriesData] = useState([]);
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const snapshot = await firestore().collection('categories').get();
+                const list = snapshot.docs.map(doc => {
+                    const data = doc.data();
+                    const name = data.name || data.title || 'Unknown';
+                    const iconKey = name.toLowerCase();
+                    return {
+                        id: doc.id,
+                        title: name,
+                        Icon: categoryIconsMap[iconKey] || categoryIconsMap['default']
+                    };
+                });
+                setCategoriesData(list);
+            } catch (error) {
+                console.log("Error fetching categories:", error);
+            }
+        };
+        fetchCategories();
+    }, []);
+
     return (
         <View style={styles.Container}>
             <View style={styles.nameContainer}>

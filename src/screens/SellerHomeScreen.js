@@ -52,8 +52,7 @@ export default function SellerHomeScreen({ navigation }) {
                 </Pressable>
             </View>
 
-            {/* Bottom Navigation Navbar */}
-            <SellerNavbar navigation={navigation} />
+            <SellerNavbar navigation={navigation} activeTab="Home" />
         </View>
     );
 }

@@ -2,24 +2,29 @@ import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native';
 import CategoryList from './CategoryList';
 import Categories from '../../screens/Categories';
 import { fonts } from '../../../theme/theme';
-import { useState } from 'react';
-
-const CATEGORIES = [
-    'Hoodie',
-    'Shoes',
-    'Electronics',
-    'Clothing',
-    'Accessories',
-    'Jewelary',
-    'Stationary'
-];
+import { useState, useEffect } from 'react';
+import firestore from '@react-native-firebase/firestore';
 
 export default function PopularCategories({ onSelect, onPress, navigation, text, title }) {
     const [active, setActive] = useState('');
+    const [categories, setCategories] = useState([]);
 
-    function handlePress(category) {
-        setActive(category);
-        onSelect?.(category);
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const snapshot = await firestore().collection('categories').get();
+                const list = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                setCategories(list);
+            } catch (error) {
+                console.log("Error fetching popular categories:", error);
+            }
+        };
+        fetchCategories();
+    }, []);
+
+    function handlePress(categoryItem) {
+        setActive(categoryItem.id);
+        onSelect?.(categoryItem.id);
     }
     return (
 
@@ -35,11 +40,11 @@ export default function PopularCategories({ onSelect, onPress, navigation, text,
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={styles.scroll}
             >
-                {CATEGORIES.map(item => (
+                {categories.map(item => (
                     <CategoryList
-                        key={item}
-                        label={item}
-                        active={item === active}
+                        key={item.id}
+                        label={item.name || item.title || item.id}
+                        active={item.id === active}
                         onPress={() => handlePress(item)}
                     />
                 ))}

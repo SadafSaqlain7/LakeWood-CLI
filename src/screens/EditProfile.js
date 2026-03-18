@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Modal, Pressable } from 'react-native';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 //import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -10,8 +10,10 @@ import GobackArrow from '../components/ui/GobackArrow';
 import ActionButton from '../components/ui/ActionButton';
 import Input from '../components/ui/Input';
 import { fonts } from '../../theme/theme';
+import { AuthContext } from '../../App';
 
 export default function EditProfile({ navigation }) {
+    const { logout } = useContext(AuthContext);
     const [name, setName] = useState('Luke Skywalker');
     const [email, setEmail] = useState('Luke.Skywalker@yourdomain.com');
     const [phone, setPhone] = useState('+1 111 467 378 399');
@@ -135,6 +137,7 @@ export default function EditProfile({ navigation }) {
                                 style={[styles.modalButton, styles.confirmButton]}
                                 onPress={() => {
                                     setShowLogoutModal(false);
+                                    if(logout) logout();
                                 }}
                             >
                                 <Text style={styles.Text}>Yes, Logout</Text>
