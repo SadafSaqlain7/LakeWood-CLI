@@ -232,9 +232,6 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 
-
-
-  
   resendRow: {
     flexDirection: 'row',
     justifyContent: 'center',

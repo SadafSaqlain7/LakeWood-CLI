@@ -19,7 +19,7 @@ const productImages = {
 
 const productImageKeys = ['shoe', 'earbuds'];
 
-// Categories will be dynamically fetched from Firestore
+
 
 export default function AddPost({ navigation }) {
 

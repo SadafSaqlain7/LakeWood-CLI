@@ -5,11 +5,9 @@ import { AuthContext } from '../../App';
 import { showToast } from '../helpers/toast';
 
 export const useAuth = () => {
-
   const { setUser } = useContext(AuthContext);
-
   const signup = async ({ username, email, password, role }) => {
-    try {
+    try { 
       const result = await auth().createUserWithEmailAndPassword(email, password);
       const uid = result.user.uid;
       const payload = {
@@ -18,7 +16,7 @@ export const useAuth = () => {
         email,
         role,
         createdAt: firestore.FieldValue.serverTimestamp(),
-      }
+      } 
       await firestore()
         .collection('users')
         .doc(uid)

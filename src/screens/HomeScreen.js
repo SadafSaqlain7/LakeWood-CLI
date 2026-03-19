@@ -18,7 +18,7 @@ export default function HomeScreen({ navigation }) {
 
     const currentUserId = auth().currentUser?.uid;
 
-    // Fetch products from Firestore in real-time
+    
     useEffect(() => {
         let query = firestore()
             .collection('products')
@@ -39,7 +39,7 @@ export default function HomeScreen({ navigation }) {
         return () => unsubscribe();
     }, [category]);
 
-    // Handle like/unlike logic
+   
     const toggleLike = async (product) => {
         if (!currentUserId) return;
 
@@ -56,26 +56,13 @@ export default function HomeScreen({ navigation }) {
                 newLikedBy = [...currentLikedBy, currentUserId];
             }
 
-            // Syncs the exact array and length dynamically, auto-healing any data inconsistency!
+           
             await productRef.update({
                 likedBy: newLikedBy,
                 likesCount: newLikedBy.length
             });
 
-            // Optimistic UI update
-            // setProducts(prev =>
-            //     prev.map(p => {
-            //         if (p.id === product.id) {
-            //             return {
-            //                 ...p,
-            //                 likedBy: isLiked
-            //                     ? p.likedBy.filter(uid => uid !== currentUserId)
-            //                     : [...(p.likedBy || []), currentUserId],
-            //             };
-            //         }
-            //         return p;
-            //     })
-            // );
+            
         } catch (error) {
             console.log("Error toggling like:", error);
         }

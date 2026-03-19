@@ -26,52 +26,9 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
       }
     };
-    loadUser();
-
-    const migrateOldProducts = async () => {
-      try {
-        console.log("Starting product category migration...");
-        const catsSnap = await firestore().collection('categories').get();
-        const catMap = {};
-        catsSnap.docs.forEach(doc => {
-          const name = doc.data().name?.toLowerCase();
-          if (name) catMap[name] = doc.id;
-        });
-
-        const prodsSnap = await firestore().collection('products').get();
-        const batch = firestore().batch();
-        let migratedCount = 0;
-
-        prodsSnap.docs.forEach(doc => {
-          const data = doc.data();
-          const pCategory = data.category;
-          
-          if (pCategory && !catsSnap.docs.find(c => c.id === pCategory)) {
-            const matchedCatId = catMap[pCategory.toLowerCase()];
-            if (matchedCatId) {
-              const ref = firestore().collection('products').doc(doc.id);
-              const updates = { category: matchedCatId };
-              if (data.categoryId !== undefined) {
-                updates.categoryId = firestore.FieldValue.delete();
-              }
-              batch.update(ref, updates);
-              migratedCount++;
-            }
-          }
-        });
-
-        if (migratedCount > 0) {
-          await batch.commit();
-          console.log(`Successfully migrated ${migratedCount} old products!`);
-        } else {
-          console.log("No old products needed migration.");
-        }
-      } catch(e) {
-        console.log("Migration error:", e);
-      }
-    };
-    migrateOldProducts();
+    loadUser(); 
   }, []);
+
 
   const setUser = async (newUser) => {
     try {
@@ -105,7 +62,7 @@ export const AuthProvider = ({ children }) => {
 export default function App() {
   return (
     <AuthProvider>
-      <AppNavigator /> 
+      <AppNavigator />
       <Toast />
     </AuthProvider>
   );
